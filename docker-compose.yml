@@ -1,0 +1,55 @@
+version: '3.9'
+services:
+  db:
+    container_name: db-hack
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/var/lib/mysql
+
+  php:
+    container_name: php-fpm-hack
+    build:
+      context: ./docker/php-fpm
+      args:
+        PHP_XDEBUG_MODE: ${PHP_XDEBUG_MODE}
+        PHP_XDEBUG_CLIENT_PORT: ${PHP_XDEBUG_CLIENT_PORT}
+        PHP_XDEBUG_CLIENT_HOST: ${PHP_XDEBUG_CLIENT_HOST}
+    ports:
+      - "${PHP_PORT}:9001"
+    volumes:
+      - ./app:/var/www/symfony:cached
+      - ./logs/symfony:/var/www/symfony/var/log:cached
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-hack
+    environment:
+      - PMA_HOST=db-hack
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - "${PHPMYADMIN_PORT}:80"
+    restart: always
+
+  nginx:
+    container_name: nginx-hack
+    build:
+      context: ./docker/nginx
+    ports:
+      - "${NGINX_PORT}:80"
+    depends_on:
+      - php
+    environment:
+      - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d
+      - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
+      - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.template
+    volumes:
+      - ./app:/var/www/symfony:cached
+      - ./logs/nginx:/var/log/nginx:cached
