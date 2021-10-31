@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route("/api")]
 class AuthenticatedUsersControllers extends AbstractController
@@ -16,13 +17,14 @@ class AuthenticatedUsersControllers extends AbstractController
     #[Route("/account/{data}", methods: ["GET"])]
     final public function indexAction(
         FilterUsersAccount $account,
+        SerializerInterface $serializer,
         ?string $data = null
     ): JsonResponse {
         $dataAccount = $account->filterAccount($data);
 
-        dump($dataAccount);
+        $serializerDataAccount = $serializer->serialize($dataAccount, 'json');
 
-        return $this->json($dataAccount);
+        return JsonResponse::fromJsonString($serializerDataAccount);
     }
 
 

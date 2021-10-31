@@ -16,36 +16,15 @@ class AccountRepository extends ServiceEntityRepository implements FilterUsersAc
 
     final public function filterAccount(?string $data = null): array
     {
-        dump($data);
         $rsm = new ResultSetMapping();
+        $rsm->addEntityResult('App\Entity\Account', 'a');
+        $rsm->addFieldResult('a', 'id', 'id');
+        $rsm->addFieldResult('a', 'transaction', 'transaction');
+        $rsm->addFieldResult('a', 'money', 'money');
+        $rsm->addFieldResult('a', 'created_at', 'createdAt');
 
-        $query = $this->getEntityManager()->createNativeQuery("SELECT transaction, money FROM account WHERE transaction = 12", $rsm);
-
-        // dump($query->getSQL());
-        //  dump($query->);
+        $query = $this->getEntityManager()->createNativeQuery("SELECT id,transaction,money,created_at FROM account WHERE transaction = $data ", $rsm);
 
         return $query->getResult();
-
-        /*$qb = $this->createQueryBuilder('a');
-        $qb
-            ->where('a.transaction LIKE :transaction')
-            ->setParameter('transaction', '1 or 1=1');
-          //  ->setParameter('transaction', "$data");
-
-        dump($qb->getQuery());
-
-        $result = $qb->getQuery()->getResult();
-        $table = [];
-
-        foreach ($result as $item) {
-
-            $table[] = [
-                $item->getTransaction(),
-                $item->getCreatedAt()->format('Y-m-d'),
-                $item->getmoney()
-            ];
-        }
-
-        return $table;*/
     }
 }

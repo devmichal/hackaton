@@ -25,8 +25,6 @@ class UserUploadFilesController extends AbstractController
         SluggerInterface $slugger,
         EntityManagerInterface $entityManager
     ): JsonResponse {
-        dump($request);
-        die();
 
         /** @var UploadedFile $brochureFile */
         $brochureFile = $request->files->get('files');

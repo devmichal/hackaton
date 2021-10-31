@@ -22,33 +22,21 @@ class Account
         $this->createdAt = new DateTime();
     }
 
-    /**
-     * @return string
-     */
     public function getTransaction(): string
     {
         return $this->transaction;
     }
 
-    /**
-     * @return int
-     */
     public function getMoney(): int
     {
         return $this->money;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->createdAt->format('Y-m-d H:i');
     }
 
-    /**
-     * @return Users
-     */
     public function getUsers(): Users
     {
         return $this->users;
