@@ -8,7 +8,8 @@
 /var/
 /.env
 /vendor/
-.idea
+/.idea
+/.php-cs-fixer.cache
 ###< symfony/framework-bundle ###
 
 ###> lexik/jwt-authentication-bundle ###
