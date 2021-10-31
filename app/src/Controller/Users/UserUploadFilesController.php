@@ -53,6 +53,7 @@ class UserUploadFilesController extends AbstractController
             $entityManager->persist($files);
             $entityManager->flush();
         }
+        
 
         return $this->json('Successful upload files :D');
     }
