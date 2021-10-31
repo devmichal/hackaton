@@ -15,14 +15,19 @@
         <field name="roles" type="array" column="roles"/>
         <field name="email" type="string" column="email"/>
 
-
-        <one-to-one field="account" target-entity="App\Entity\Account" orphan-removal="true" fetch="LAZY">
-            <join-column name="account_id"/>
+        <one-to-many field="account" target-entity="App\Entity\Account" mapped-by="users">
             <cascade>
                 <cascade-remove/>
                 <cascade-persist/>
             </cascade>
-        </one-to-one>
+        </one-to-many>
+
+        <one-to-many field="files" target-entity="App\Entity\Files" mapped-by="users">
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
 
     </entity>
 </doctrine-mapping>

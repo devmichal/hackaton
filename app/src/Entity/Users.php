@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -10,7 +11,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Users implements UserInterface
 {
-
     private string $id;
 
     private string $email;
@@ -21,14 +21,33 @@ class Users implements UserInterface
 
     private DateTime $createdAt;
 
-    private Account $account;
+    private Collection $account;
 
     private array $roles;
+
+    private Collection $files;
+
 
     public function __construct()
     {
         $this->id        = uuid_create();
         $this->createdAt = new DateTime();
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     /**
@@ -72,27 +91,11 @@ class Users implements UserInterface
     }
 
     /**
-     * @param DateTime $createdAt
+     * @return Collection
      */
-    public function setCreatedAt(DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return Account
-     */
-    public function getAccount(): Account
+    public function getAccount(): Collection
     {
         return $this->account;
-    }
-
-    /**
-     * @param Account $account
-     */
-    public function setAccount(Account $account): void
-    {
-        $this->account = $account;
     }
 
     /**

@@ -1,10 +1,10 @@
 security:
     encoders:
-        App\Entity\User: bcrypt
+        App\Entity\Users: bcrypt
     providers:
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Users
                 property: username
     firewalls:
         create_token:
@@ -26,4 +26,4 @@ security:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
     access_control:
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }

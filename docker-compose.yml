@@ -51,5 +51,6 @@ services:
       - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.template
     volumes:
+      - ./Docker/nginx/templates:/etc/nginx/conf.d
       - ./app:/var/www/symfony:cached
       - ./logs/nginx:/var/log/nginx:cached

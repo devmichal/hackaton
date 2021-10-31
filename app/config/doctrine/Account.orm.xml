@@ -9,5 +9,17 @@
             <generator strategy="NONE"/>
         </id>
 
+        <field name="transaction" type="string" column="transaction"/>
+        <field name="money" type="integer" column="money"/>
+        <field name="createdAt" type="datetime" column="created_at"/>
+
+        <many-to-one field="users" target-entity="App\Entity\Users" inversed-by="account" fetch="LAZY">
+            <join-column name="users_id"/>
+            <cascade>
+                <cascade-remove/>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
+        
     </entity>
 </doctrine-mapping>
