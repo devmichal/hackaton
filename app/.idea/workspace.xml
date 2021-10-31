@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="003806ca-61bb-4f0f-aaa0-46e040ff0dbe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Docker/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Docker/nginx/templates/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../Docker/nginx/templates/default.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exception/RolesAccessException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Factory/Account/CreateAccount/CreateAccountInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/CheckUsersRole.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php-cs-fixer.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.php-cs-fixer.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Users/AuthenticatedUsersControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Users/AuthenticatedUsersControllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Users/UserUploadFilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Users/UserUploadFilesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AccountRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AccountRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/Account/CreateAccount/CreateAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/Account/CreateAccount/CreateAccount.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +128,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -145,11 +142,22 @@
       <updated>1635149648925</updated>
       <workItem from="1635149650429" duration="4093000" />
       <workItem from="1635257789818" duration="76000" />
-      <workItem from="1635709182438" duration="1625000" />
+      <workItem from="1635709182438" duration="6343000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

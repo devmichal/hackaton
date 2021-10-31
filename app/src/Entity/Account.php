@@ -16,10 +16,15 @@ class Account
 
     private Users $users;
 
-    public function __construct()
+    public function __construct(
+        int $money,
+        Users $users
+    )
     {
-        $this->id        = uuid_create();
+        $this->id = uuid_create();
         $this->createdAt = new DateTime();
+        $this->users = $users;
+        $this->money = $money;
     }
 
     public function getTransaction(): string

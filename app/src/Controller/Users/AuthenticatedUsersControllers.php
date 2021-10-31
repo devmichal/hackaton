@@ -3,6 +3,7 @@
 namespace App\Controller\Users;
 
 use App\Enum\HttpMessage;
+use App\Factory\Account\CreateAccount\CreateAccountInterface;
 use App\Repository\FilterUsersAccount;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,6 +21,7 @@ class AuthenticatedUsersControllers extends AbstractController
         SerializerInterface $serializer,
         ?string $data = null
     ): JsonResponse {
+
         $dataAccount = $account->filterAccount($data);
 
         $serializerDataAccount = $serializer->serialize($dataAccount, 'json');
@@ -28,11 +30,15 @@ class AuthenticatedUsersControllers extends AbstractController
     }
 
 
-    #[Route("/account", methods: ["POST"])]
-    final public function createAction(
-        Request $request
-    ) {
+    #[Route("/account/pay-in", methods: ["POST"])]
+    final public function payIn(
+        Request $request,
+        CreateAccountInterface $createAccount
+    ): JsonResponse
+    {
         $content = json_decode($request->getContent(), true);
+
+        $createAccount->payIn($content, $this->getUser());
 
         return new JsonResponse(HttpMessage::AUTH_MESSAGE, Response::HTTP_OK);
     }
